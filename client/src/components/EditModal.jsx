@@ -32,6 +32,7 @@ const EditModal = ({ todo }) => {
       console.error(error);
     }
   };
+  //
 
   return (
     <div>
