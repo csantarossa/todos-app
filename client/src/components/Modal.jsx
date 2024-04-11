@@ -18,7 +18,7 @@ const Modal = () => {
       });
       const newTodo = await res.json();
       console.log(newTodo);
-      // setContent("");
+
       setTodos([...todos, newTodo]);
     } catch (error) {
       console.error(error);
@@ -58,6 +58,7 @@ const Modal = () => {
                 className="btn bg-[#4eb871] text-white"
                 onClick={() => {
                   createNewTodo();
+                  setContent("");
                 }}
               >
                 Create
