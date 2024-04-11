@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../App";
+import { ThemeContext, TodosContext } from "../App";
 
 const Modal = () => {
   const theme = useContext(ThemeContext);
   const [content, setContent] = useState("");
+  const [todos, setTodos] = useContext(TodosContext);
 
   const createNewTodo = async () => {
     console.log(content);
@@ -17,7 +18,8 @@ const Modal = () => {
       });
       const newTodo = await res.json();
       console.log(newTodo);
-      window.location.reload();
+      setContent("");
+      setTodos([...todos, newTodo]);
     } catch (error) {
       console.error(error);
     }
