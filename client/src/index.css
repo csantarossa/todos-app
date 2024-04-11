@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background-color: white;
+}
+
+.gradient-bg {
+  background-size: 100% 100%;
+  background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+  background-image: radial-gradient(
+      21% 37% at 72% 23%,
+      #2e2e2e9c 24%,
+      #073aff00 100%
+    ),
+    radial-gradient(35% 56% at 91% 74%, #323232f5 9%, #23232300 100%),
+    radial-gradient(74% 86% at 67% 38%, #101010f5 24%, #26262600 99%),
+    linear-gradient(125deg, #3e3e3eff 0%, #000000ff 100%);
+}
