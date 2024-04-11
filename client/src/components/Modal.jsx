@@ -18,7 +18,7 @@ const Modal = () => {
       });
       const newTodo = await res.json();
       console.log(newTodo);
-      setContent("");
+      // setContent("");
       setTodos([...todos, newTodo]);
     } catch (error) {
       console.error(error);
