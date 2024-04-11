@@ -8,7 +8,7 @@ const Modal = () => {
   const createNewTodo = async () => {
     console.log(content);
     try {
-      const res = await fetch("http://localhost:8000/api/todos", {
+      const res = await fetch("/api/todos", {
         method: "POST",
         body: JSON.stringify({ todo: content }),
         headers: {

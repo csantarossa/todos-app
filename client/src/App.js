@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     const getTodos = async () => {
-      const res = await fetch("http://localhost:8000/api/todos");
+      const res = await fetch("/api/todos");
       const todos = await res.json();
       setTodos(todos);
       console.log(todos);

@@ -7,7 +7,7 @@ const Card = ({ todo, setTodos }) => {
   const theme = useContext(ThemeContext);
   const updateTodo = async (todoId, todoStatus) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/todos/${todoId}`, {
+      const res = await fetch(`/api/todos/${todoId}`, {
         method: "PUT",
         body: JSON.stringify({ status: todoStatus }),
         headers: {
@@ -28,7 +28,7 @@ const Card = ({ todo, setTodos }) => {
   };
 
   const deleteTodo = async (todoId) => {
-    const res = await fetch(`http://localhost:8000/api/todos/${todoId}`, {
+    const res = await fetch(`/api/todos/${todoId}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",

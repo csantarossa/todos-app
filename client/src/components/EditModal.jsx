@@ -10,7 +10,7 @@ const EditModal = ({ todo }) => {
   const handleEditTodo = async (id) => {
     try {
       console.log(`Testing ${id}`);
-      const res = await fetch(`http://localhost:8000/api/todos/update/${id}`, {
+      const res = await fetch(`/api/todos/update/${id}`, {
         method: "PUT",
         body: JSON.stringify({ updatedTodo: editTodo }),
         headers: {
