@@ -3,6 +3,12 @@ import Card from "./components/Card";
 import { Plus, List } from "@geist-ui/icons";
 import Modal from "./components/Modal";
 import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import TodoComponent from "./TodoComponent";
+import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 export const TodosContext = createContext();
 export const ThemeContext = createContext();
@@ -31,7 +37,7 @@ function App() {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={[theme, setTheme]}>
       <TodosContext.Provider value={[todos, setTodos]}>
         <div
           data-theme={`${theme ? "dark" : "light"}`}
@@ -39,38 +45,12 @@ function App() {
             theme ? "bg-[#131313]" : "bg-white"
           } translate-x-[-50%] justify-start items-center flex-col gap-10 pt-10 overflow-x-hidden`}
         >
-          <div className="relative h-auto">
-            <h1
-              className={`text-6xl font-bold ${
-                theme ? "text-[#b4b4b4]" : "text-[#1a1a1a"
-              }`}
-            >
-              todo.
-            </h1>
-            <p className="text-xs absolute right-0 bottom-[-12px]">
-              TASK TRACKING
-            </p>
-          </div>
-          <input
-            type="checkbox"
-            value="synthwave"
-            className="toggle theme-controller lg:absolute right-20 top-[60px]"
-            onClick={() => {
-              setTheme(!theme);
-            }}
-          />
-
-          <Modal />
-          <div
-            className={`w-[90vw] inline-grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 justify-center items-center shadow-inner ${
-              theme ? "bg-[#1b1b1b]" : "bg-[#ececec]"
-            } p-6 rounded-3xl`}
-          >
-            {todos.length > 0 &&
-              todos.map((todo) => (
-                <Card key={todo._id} todo={todo} setTodos={setTodos} />
-              ))}
-          </div>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
           <Footer />
         </div>
       </TodosContext.Provider>

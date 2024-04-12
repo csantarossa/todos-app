@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../App";
 
 const Footer = () => {
-  const theme = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   return (
     <footer
       className={`footer ${

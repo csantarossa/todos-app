@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { ThemeContext } from "../App";
 
 const EditModal = ({ todo }) => {
-  const theme = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   const dialogId = `edit-modal-${todo._id}`;
   const [editTodo, setEditTodo] = useState(todo.todo);
 

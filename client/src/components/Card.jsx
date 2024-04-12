@@ -4,7 +4,7 @@ import EditModal from "./EditModal";
 import { ThemeContext } from "../App";
 
 const Card = ({ todo, setTodos }) => {
-  const theme = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   const updateTodo = async (todoId, todoStatus) => {
     try {
       const res = await fetch(`/api/todos/${todoId}`, {

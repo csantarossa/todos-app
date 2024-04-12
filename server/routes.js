@@ -3,6 +3,24 @@ const { getConnectedClient } = require("./database");
 const router = express.Router();
 const { ObjectId } = require("mongodb");
 
+// AUTH FROM MONGO
+const getUsersCollection = () => {
+  const client = getConnectedClient();
+  const collection = client.db("todosdb").collection("users");
+  return collection;
+};
+
+// AUTH ENDPOINTS
+router.get("/api/login", async (req, res) => {
+  try {
+    const collection = getUsersCollection();
+    const res = await json();
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// TODOS FROM MONGO
 const getCollection = () => {
   const client = getConnectedClient();
   const collection = client.db("todosdb").collection("todos");
