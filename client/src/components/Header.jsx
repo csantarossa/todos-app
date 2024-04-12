@@ -14,7 +14,7 @@ const Header = () => {
         >
           todo.
         </h1>
-        <p className="text-xs absolute right-0 bottom-[-12px]">TASK TRACKING</p>
+        <p className="text-xs absolute right-0 bottom-[-12px]">TASK MANAGER</p>
       </div>
       <input
         type="checkbox"
