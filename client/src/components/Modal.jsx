@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { ThemeContext, TodosContext } from "../App";
 
 const Modal = () => {
-  const theme = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   const [content, setContent] = useState("");
   const [todos, setTodos] = useContext(TodosContext);
 
@@ -41,6 +41,7 @@ const Modal = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">New Task</h3>
           <input
+            value={content}
             type="text"
             placeholder="Describe the task..."
             className={`p-3 w-full rounded-lg mt-4 ${
