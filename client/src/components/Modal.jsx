@@ -20,9 +20,10 @@ const Modal = () => {
       console.log(newTodo);
 
       setTodos([...todos, newTodo]);
-      setContent("");
     } catch (error) {
       console.error(error);
+    } finally {
+      setContent("");
     }
   };
 
