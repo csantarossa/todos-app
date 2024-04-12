@@ -20,6 +20,7 @@ const Modal = () => {
       console.log(newTodo);
 
       setTodos([...todos, newTodo]);
+      setContent("");
     } catch (error) {
       console.error(error);
     }
@@ -58,7 +59,6 @@ const Modal = () => {
                 className="btn bg-[#4eb871] text-white"
                 onClick={() => {
                   createNewTodo();
-                  setContent("");
                 }}
               >
                 Create
