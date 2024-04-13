@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -9,8 +11,44 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  const registerUser = (e) => {
+  const navigate = useNavigate();
+
+  const registerUser = async (e) => {
     e.preventDefault();
+    const { firstname, lastname, email, password, confirmPassword } = userData;
+    try {
+      const userData = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          password,
+          confirmPassword,
+        }),
+      });
+
+      const data = await userData.json();
+      console.log(data);
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setUserData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+        toast.success("Account Created");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

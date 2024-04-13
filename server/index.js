@@ -4,6 +4,10 @@ const cors = require("cors");
 require("dotenv").config();
 const { connectToMongoDB } = require("./database");
 const path = require("path");
+const { mongoose } = require("mongoose");
+const cookieParser = require("cookie-parser");
+
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 const corsOptions = {
@@ -12,11 +16,16 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "build")));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
+
+// middleware
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 
 const router = require("./routes");
 
